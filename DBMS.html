@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DBMS Mastery | Data Organized</title>
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗄️</text></svg>"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Prism.js Theme -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="global.css" />
+  </head>
+  <body>
+    <div class="progress-bar" id="progressBar"></div>
+    <button class="mobile-toggle" onclick="toggleSidebar()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="logo">{ DBMS }</a>
+        <button onclick="toggleTheme()" class="theme-toggle" id="themeToggle">
+          <span class="theme-icon moon" id="themeIcon"></span>
+          <span id="themeText">Dark Mode</span>
+        </button>
+      </div>
+      <a href="index.html" class="nav-link" style="margin-bottom: 1rem">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+
+      <details open>
+        <summary class="nav-category">Module 1: Intro</summary>
+        <a href="#intro" class="nav-link">1.1 Introduction</a>
+      </details>
+    </nav>
+
+    <div class="main-content">
+      <div class="hero">
+        <h1 style="font-size: 2.5rem; margin-bottom: 10px">
+          <span>SELECT * FROM</span>
+          <span>Knowledge</span>
+          <span>;</span>
+        </h1>
+
+        <p style="font-size: 1.1rem; color: #6a9955; margin-top: 0">
+          -- The complete guide to Database Management Systems.
+        </p>
+      </div>
+
+      <div class="content-container">
+        <section id="intro">
+          <h2>
+            1.1 Introduction to DBMS <span class="tag tag-core">Module 1</span>
+          </h2>
+          <p>
+            A <strong>Database Management System (DBMS)</strong> is software
+            that specifically facilitates the creation and maintenance of a
+            computerized database.
+          </p>
+
+          <h3>Key Concepts</h3>
+          <ul>
+            <li><strong>Data:</strong> Raw facts and figures.</li>
+            <li>
+              <strong>Information:</strong> Processed data that has meaning.
+            </li>
+            <li>
+              <strong>Database:</strong> An organized collection of stored data.
+            </li>
+            <li>
+              <strong>DBMS:</strong> Software that manages databases, providing
+              an interface between the database and users/applications.
+            </li>
+          </ul>
+
+          <div class="info-box">
+            <span class="info-title">Why use a DBMS?</span>
+            It provides a systematic way to create, retrieve, update and manage
+            data, ensuring data integrity, security, and consistent access.
+          </div>
+
+          <h3>DBMS Architecture</h3>
+          <p>
+            Most modern DBMS follow a <strong>3-tier architecture</strong> that
+            separates the database into three levels:
+          </p>
+
+          <div class="mermaid-diagram">
+            <span class="info-title">3-Tier DBMS Architecture</span>
+            <pre class="mermaid">
+flowchart TD
+    A["👥 EXTERNAL LEVEL<br/>(View Level)<br/><br/>Different users see different<br/>customized views of the data<br/>based on their needs and permissions"] --> B["🧠 CONCEPTUAL LEVEL<br/>(Logical Level)<br/><br/>Complete logical view of the entire database<br/>including tables, relationships, constraints,<br/>data types, keys, and integrity rules"]
+    B --> C["💾 INTERNAL LEVEL<br/>(Physical Level)<br/><br/>How data is actually stored on disk<br/>files, indexes, data structures,<br/>storage allocation, and compression"]
+    
+    style A fill:#58a6ff22,stroke:#58a6ff,stroke-width:3px
+    style B fill:#d2a8ff22,stroke:#d2a8ff,stroke-width:3px
+    style C fill:#a5d6ff22,stroke:#a5d6ff,stroke-width:3px
+            </pre>
+          </div>
+
+          <h3>Types of DBMS</h3>
+          <div class="table-container">
+            <table
+              border="1"
+              cellpadding="10"
+              cellspacing="0"
+              style="width: 100%; border-collapse: collapse"
+            >
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Structure</th>
+                  <th>Examples</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Relational (RDBMS)</strong></td>
+                  <td>Tables with rows and columns</td>
+                  <td>MySQL, PostgreSQL, Oracle, SQL Server</td>
+                </tr>
+                <tr>
+                  <td><strong>NoSQL</strong></td>
+                  <td>Document, Key-Value, Graph, Column-family</td>
+                  <td>MongoDB, Redis, Neo4j, Cassandra</td>
+                </tr>
+                <tr>
+                  <td><strong>Hierarchical</strong></td>
+                  <td>Tree-like structure</td>
+                  <td>IBM IMS, Windows Registry</td>
+                </tr>
+                <tr>
+                  <td><strong>Network</strong></td>
+                  <td>Graph structure with multiple parents</td>
+                  <td>IDMS, TurboIMAGE</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="warning-box">
+            <span class="warning-title">Security Warning: SQL Injection</span>
+            One of the most dangerous database vulnerabilities is
+            <strong>SQL Injection</strong>, where attackers insert malicious SQL
+            code through user inputs. <br /><br />
+            <strong>Vulnerable Code:</strong>
+            <pre><code class="language-sql">-- Never do this!
+query = "SELECT * FROM users WHERE username='" + userInput + "'";</code></pre>
+            <strong>Safe Approach:</strong> Always use
+            <strong>prepared statements</strong> or
+            <strong>parameterized queries</strong> to prevent SQL injection
+            attacks.
+          </div>
+
+          <div class="try-it-box">
+            <span class="try-it-title"
+              >Try It Yourself: Practice SQL Basics</span
+            >
+            Visit an online SQL playground and practice these commands:
+            <ol>
+              <li>
+                Create a table:
+                <code>CREATE TABLE students (id INT, name VARCHAR(50));</code>
+              </li>
+              <li>
+                Insert data:
+                <code>INSERT INTO students VALUES (1, 'Alice');</code>
+              </li>
+              <li>Query data: <code>SELECT * FROM students;</code></li>
+              <li>
+                Update data:
+                <code>UPDATE students SET name='Bob' WHERE id=1;</code>
+              </li>
+            </ol>
+            <strong>Recommended:</strong> Try
+            <a href="https://www.db-fiddle.com/" target="_blank">DB Fiddle</a>
+            or
+            <a href="https://sqliteonline.com/" target="_blank"
+              >SQLite Online</a
+            >
+          </div>
+
+          <details class="fun-fact">
+            <summary>History Byte</summary>
+            <div class="fun-content">
+              The first commercial DBMS was the
+              <strong>Integrated Data Store (IDS)</strong>, developed by Charles
+              Bachman at General Electric in the early 1960s. The relational
+              model, which dominates today, was proposed by Edgar F. Codd at IBM
+              in 1970.
+            </div>
+          </details>
+
+          <details class="advanced-fact">
+            <summary>Deep Dive: ACID Properties</summary>
+            <div class="fun-content">
+              Relational databases guarantee <strong>ACID</strong> properties
+              for transactions: <br /><br />
+              <strong>A</strong>tomicity: All operations in a transaction
+              succeed or all fail (no partial updates)
+              <br />
+              <strong>C</strong>onsistency: Database remains in a valid state
+              before and after transaction
+              <br />
+              <strong>I</strong>solation: Concurrent transactions don't
+              interfere with each other
+              <br />
+              <strong>D</strong>urability: Committed changes are permanent, even
+              after system failure <br /><br />
+              NoSQL databases often trade some ACID guarantees for better
+              scalability (BASE model).
+            </div>
+          </details>
+
+          <div class="learn-more">
+            <h4>Learn More</h4>
+            <ul>
+              <li>
+                <a
+                  href="https://www.oracle.com/database/what-is-database/"
+                  target="_blank"
+                >
+                  Oracle: What is a Database?
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.geeksforgeeks.org/introduction-of-dbms-database-management-system-set-1/"
+                  target="_blank"
+                >
+                  GeeksforGeeks: DBMS Introduction
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/watch?v=FR4QIeZaPeM"
+                  target="_blank"
+                >
+                  Video: Database Management System Tutorial
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <footer class="glass-footer">
+        <p>&copy; 2025 WebGuide.</p>
+      </footer>
+    </div>
+
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <!-- Prism.js Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <!-- Mermaid.js for Diagrams -->
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: document.body.classList.contains("light-mode")
+          ? "default"
+          : "dark",
+        themeVariables: {
+          primaryColor: "#58a6ff",
+          primaryTextColor: "#f0f6fc",
+          primaryBorderColor: "#58a6ff",
+          lineColor: "#8b949e",
+          secondaryColor: "#d2a8ff",
+          tertiaryColor: "#a5d6ff",
+        },
+      });
+
+      // Re-initialize on theme change
+      window.addEventListener("themeChanged", () => {
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: document.body.classList.contains("light-mode")
+            ? "default"
+            : "dark",
+        });
+        mermaid.contentLoaded();
+      });
+    </script>
+  </body>
+</html>

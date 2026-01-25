@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>C Programming | From Basics to Advanced</title>
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Prism.js Theme -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="global.css" />
+  </head>
+  <body>
+    <div class="progress-bar" id="progressBar"></div>
+    <button class="mobile-toggle" onclick="toggleSidebar()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="#" class="logo">{ C }</a>
+        <button onclick="toggleTheme()" class="theme-toggle" id="themeToggle">
+          <span class="theme-icon moon" id="themeIcon"></span>
+          <span id="themeText">Dark Mode</span>
+        </button>
+      </div>
+
+      <a href="index.html" class="nav-link" style="margin-bottom: 1rem">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+
+      <details open>
+        <summary class="nav-category">Module 1: Introduction</summary>
+        <a href="#intro-overview" class="nav-link">1.1 C Overview</a>
+        <a href="#intro-history" class="nav-link">1.2 History & Features</a>
+        <a href="#intro-structure" class="nav-link">1.3 Program Structure</a>
+        <a href="#intro-compilation" class="nav-link"
+          >1.4 Compilation Process</a
+        >
+      </details>
+
+      <details>
+        <summary class="nav-category">Module 2: Fundamentals</summary>
+        <a href="#fund-datatypes" class="nav-link">2.1 Data Types</a>
+        <a href="#fund-variables" class="nav-link">2.2 Variables & Constants</a>
+        <a href="#fund-operators" class="nav-link">2.3 Operators</a>
+        <a href="#fund-io" class="nav-link">2.4 Input/Output</a>
+      </details>
+
+      <details>
+        <summary class="nav-category">Module 3: Control Flow</summary>
+        <a href="#control-conditional" class="nav-link"
+          >3.1 Conditional Statements</a
+        >
+        <a href="#control-loops" class="nav-link">3.2 Loops</a>
+        <a href="#control-jump" class="nav-link">3.3 Jump Statements</a>
+      </details>
+
+      <details>
+        <summary class="nav-category">Module 4: Functions</summary>
+        <a href="#func-basics" class="nav-link">4.1 Function Basics</a>
+        <a href="#func-parameters" class="nav-link">4.2 Parameters & Return</a>
+        <a href="#func-recursion" class="nav-link">4.3 Recursion</a>
+        <a href="#func-storage" class="nav-link">4.4 Storage Classes</a>
+      </details>
+
+      <details>
+        <summary class="nav-category">Module 5: Arrays & Strings</summary>
+        <a href="#array-basics" class="nav-link">5.1 Arrays</a>
+        <a href="#array-multi" class="nav-link">5.2 Multidimensional Arrays</a>
+        <a href="#string-basics" class="nav-link">5.3 Strings</a>
+        <a href="#string-functions" class="nav-link">5.4 String Functions</a>
+      </details>
+
+      <details>
+        <summary class="nav-category">Module 6: Pointers</summary>
+        <a href="#ptr-basics" class="nav-link">6.1 Pointer Basics</a>
+        <a href="#ptr-arithmetic" class="nav-link">6.2 Pointer Arithmetic</a>
+        <a href="#ptr-arrays" class="nav-link">6.3 Pointers & Arrays</a>
+        <a href="#ptr-functions" class="nav-link">6.4 Pointers & Functions</a>
+      </details>
+
+      <details>
+        <summary class="nav-category">Module 7: Structures & Unions</summary>
+        <a href="#struct-basics" class="nav-link">7.1 Structures</a>
+        <a href="#struct-nested" class="nav-link">7.2 Nested Structures</a>
+        <a href="#union-basics" class="nav-link">7.3 Unions</a>
+        <a href="#typedef-enum" class="nav-link">7.4 Typedef & Enum</a>
+      </details>
+
+      <details>
+        <summary class="nav-category">Module 8: Advanced Topics</summary>
+        <a href="#adv-files" class="nav-link">8.1 File Handling</a>
+        <a href="#adv-preprocessor" class="nav-link">8.2 Preprocessor</a>
+        <a href="#adv-memory" class="nav-link">8.3 Dynamic Memory</a>
+        <a href="#adv-cmdline" class="nav-link">8.4 Command Line Args</a>
+      </details>
+
+      <details>
+        <summary class="nav-category">Practical & Extras</summary>
+        <a href="#lab-practical" class="nav-link">
+          <i class="fa-solid fa-flask"></i> C Lab
+        </a>
+        <a href="#practice-problems" class="nav-link">
+          <i class="fa-solid fa-code"></i> Practice Problems
+        </a>
+        <a href="#roadmap" class="nav-link">
+          <i class="fa-solid fa-map-location-dot"></i> C Roadmap
+        </a>
+      </details>
+    </nav>
+
+    <div class="main-content">
+      <div class="hero">
+        <h1 style="font-size: 2.5rem; margin-bottom: 10px">
+          <span>#include</span>
+          <span>&lt;stdio.h&gt;</span>
+        </h1>
+
+        <p style="font-size: 1.1rem; color: #6a9955; margin-top: 0">
+          // The foundation of modern programming languages.
+        </p>
+
+        <p style="color: #ce9178; font-size: 0.9rem; margin-top: 15px">
+          "C is quirky, flawed, and an enormous success."
+        </p>
+      </div>
+
+      <div class="content-container">
+        <!-- ============================================ -->
+        <!-- TEMPLATE SECTION WITH ALL COMPONENTS -->
+        <!-- ============================================ -->
+        <section id="intro-overview">
+          <h2>
+            1.1 C Programming Overview
+            <span class="tag tag-core">Module 1</span>
+          </h2>
+
+          <h3>What is C?</h3>
+          <p>
+            C is a
+            <strong>general-purpose, procedural programming language</strong>
+            developed by <strong>Dennis Ritchie</strong> at Bell Labs in
+            <strong>1972</strong>. It was originally designed for system
+            programming, particularly for developing the UNIX operating system.
+          </p>
+          <p>
+            C is known for its efficiency, low-level memory access capabilities,
+            and portability. It provides a foundation for many modern
+            programming languages including C++, Java, C#, and Python.
+          </p>
+
+          <h3>Why Learn C?</h3>
+          <p>Learning C programming offers several advantages:</p>
+          <ul>
+            <li>
+              <strong>Foundation:</strong> Understanding C helps you grasp
+              fundamental programming concepts used in other languages.
+            </li>
+            <li>
+              <strong>Performance:</strong> C programs are fast and efficient,
+              making it ideal for system-level programming.
+            </li>
+            <li>
+              <strong>Control:</strong> Direct access to memory through pointers
+              gives you fine-grained control over system resources.
+            </li>
+            <li>
+              <strong>Portability:</strong> C code can be compiled and run on
+              various platforms with minimal modifications.
+            </li>
+            <li>
+              <strong>Career:</strong> C is widely used in embedded systems,
+              operating systems, and high-performance applications.
+            </li>
+          </ul>
+
+          <h3>Key Features of C</h3>
+          <ol>
+            <li>
+              <strong>Simple & Efficient:</strong> C has a small set of keywords
+              (32 in ANSI C) and straightforward syntax.
+            </li>
+            <li>
+              <strong>Procedural Language:</strong> Programs are structured as
+              procedures or functions that operate on data.
+            </li>
+            <li>
+              <strong>Middle-Level Language:</strong> Combines features of both
+              high-level and low-level languages, allowing system programming
+              while maintaining readability.
+            </li>
+            <li>
+              <strong>Pointers:</strong> Direct memory manipulation through
+              pointers makes C powerful but requires careful handling.
+            </li>
+            <li>
+              <strong>Rich Library:</strong> Standard library provides numerous
+              built-in functions for common operations.
+            </li>
+            <li>
+              <strong>Extensible:</strong> You can add your own functions to the
+              C library.
+            </li>
+          </ol>
+
+          <!-- Info Box Component -->
+          <div class="info-box">
+            <span class="info-title">Did You Know?</span>
+            C was originally developed to re-implement the UNIX operating
+            system. Before C, UNIX was written in assembly language. The
+            creation of C made UNIX portable across different hardware
+            platforms, revolutionizing operating system development.
+          </div>
+
+          <!-- Fun Fact Component -->
+          <details class="fun-fact">
+            <summary>Quick Info: The Name "C"</summary>
+            <div class="fun-content">
+              C was named as a successor to the
+              <strong>B programming language</strong>, which was developed by
+              Ken Thompson. B itself was influenced by BCPL (Basic Combined
+              Programming Language). The naming follows a simple alphabetical
+              progression: BCPL → B → C!
+            </div>
+          </details>
+
+          <!-- Advanced Fact Component -->
+          <details class="advanced-fact">
+            <summary>Deep Dive: C's Influence on Modern Languages</summary>
+            <div class="fun-content">
+              <strong>The C Family Tree:</strong> C has influenced countless
+              programming languages. Here's how: <br /><br />
+              <strong>Direct Descendants:</strong>
+              <ul>
+                <li><strong>C++:</strong> Object-oriented extension of C</li>
+                <li>
+                  <strong>Objective-C:</strong> Object-oriented layer on C (used
+                  in iOS/macOS)
+                </li>
+                <li>
+                  <strong>C#:</strong> Microsoft's modern take on C syntax
+                </li>
+              </ul>
+              <strong>Syntax Influence:</strong>
+              <ul>
+                <li>
+                  <strong>Java:</strong> Borrowed C's syntax and control
+                  structures
+                </li>
+                <li><strong>JavaScript:</strong> Syntax inspired by C</li>
+                <li><strong>PHP:</strong> Uses C-like syntax</li>
+                <li>
+                  <strong>Go:</strong> Modern language with C-inspired syntax
+                </li>
+              </ul>
+              Even Python's reference implementation (CPython) is written in C!
+            </div>
+          </details>
+
+          <!-- Code Example Component -->
+          <h3>Your First C Program</h3>
+          <p>
+            Let's start with the traditional "Hello, World!" program that
+            demonstrates the basic structure of a C program:
+          </p>
+
+          <pre><code class="language-c">// File: hello.c
+// This is a simple C program
+
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+
+          <h4>Breaking Down the Code</h4>
+          <ul>
+            <li>
+              <code>#include &lt;stdio.h&gt;</code> — Preprocessor directive
+              that includes the Standard Input/Output library header file.
+            </li>
+            <li>
+              <code>int main()</code> — The main function where program
+              execution begins. <code>int</code> indicates it returns an integer
+              value.
+            </li>
+            <li>
+              <code>printf()</code> — Library function to print formatted output
+              to the console.
+            </li>
+            <li><code>\n</code> — Escape sequence for a newline character.</li>
+            <li>
+              <code>return 0;</code> — Returns 0 to the operating system,
+              indicating successful program execution.
+            </li>
+          </ul>
+
+          <!-- Table Component -->
+          <h3>C vs Other Languages</h3>
+          <div class="table-container">
+            <table
+              border="1"
+              cellpadding="10"
+              cellspacing="0"
+              style="width: 100%; border-collapse: collapse"
+            >
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>C</th>
+                  <th>Python</th>
+                  <th>Java</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Type System</strong></td>
+                  <td>Static, Weak</td>
+                  <td>Dynamic, Strong</td>
+                  <td>Static, Strong</td>
+                </tr>
+                <tr>
+                  <td><strong>Memory Management</strong></td>
+                  <td>Manual (malloc/free)</td>
+                  <td>Automatic (GC)</td>
+                  <td>Automatic (GC)</td>
+                </tr>
+                <tr>
+                  <td><strong>Paradigm</strong></td>
+                  <td>Procedural</td>
+                  <td>Multi-paradigm</td>
+                  <td>Object-Oriented</td>
+                </tr>
+                <tr>
+                  <td><strong>Compilation</strong></td>
+                  <td>Compiled to machine code</td>
+                  <td>Interpreted</td>
+                  <td>Compiled to bytecode</td>
+                </tr>
+                <tr>
+                  <td><strong>Performance</strong></td>
+                  <td>Very High</td>
+                  <td>Moderate</td>
+                  <td>High</td>
+                </tr>
+                <tr>
+                  <td><strong>Pointers</strong></td>
+                  <td>Explicit support</td>
+                  <td>No direct access</td>
+                  <td>No direct access</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Learn More Component -->
+          <div class="learn-more">
+            <h4>Learn More</h4>
+            <ul>
+              <li>
+                <a href="https://en.cppreference.com/w/c" target="_blank">
+                  C Reference Documentation
+                </a>
+              </li>
+              <li>
+                <a href="https://www.learn-c.org/" target="_blank">
+                  Interactive C Tutorial
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/watch?v=KJgsSFOSQv0"
+                  target="_blank"
+                >
+                  Video: C Programming Tutorial for Beginners
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.bell-labs.com/usr/dmr/www/chist.html"
+                  target="_blank"
+                >
+                  The Development of the C Language (by Dennis Ritchie)
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- PLACEHOLDER SECTIONS (Add content as needed) -->
+        <!-- ============================================ -->
+
+        <section id="intro-history">
+          <h2>
+            1.2 History & Features
+            <span class="tag tag-core">Module 1</span>
+          </h2>
+
+          <h3>The Birth of C (1972)</h3>
+          <p>
+            C was created by <strong>Dennis Ritchie</strong> at Bell
+            Laboratories between <strong>1972 and 1973</strong> to develop the
+            UNIX operating system. Before C, UNIX was written in assembly
+            language, making it difficult to port to different hardware
+            platforms.
+          </p>
+          <p>
+            C was designed as a successor to the
+            <strong>B language</strong> (created by Ken Thompson), which itself
+            was derived from BCPL. The goal was to create a language that was:
+          </p>
+          <ul>
+            <li>Close to the hardware (like assembly)</li>
+            <li>Portable across different machines</li>
+            <li>Efficient and fast</li>
+            <li>Simple enough to be easily learned</li>
+          </ul>
+
+          <h3>Evolution Through Standards</h3>
+          <p>
+            C has evolved through several standardization efforts over the
+            decades:
+          </p>
+
+          <div class="table-container">
+            <table
+              border="1"
+              cellpadding="10"
+              cellspacing="0"
+              style="width: 100%; border-collapse: collapse"
+            >
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Standard</th>
+                  <th>Key Features</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1978</strong></td>
+                  <td>K&R C</td>
+                  <td>
+                    First edition of "The C Programming Language" by Kernighan
+                    and Ritchie. De facto standard before official
+                    standardization.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>1989</strong></td>
+                  <td>ANSI C (C89)</td>
+                  <td>
+                    First official standard. Added function prototypes, void
+                    pointers, standard library formalization.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>1990</strong></td>
+                  <td>ISO C (C90)</td>
+                  <td>
+                    ISO adoption of ANSI C89 with minor modifications. Widely
+                    supported baseline.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>1999</strong></td>
+                  <td>C99</td>
+                  <td>
+                    Inline functions, variable-length arrays,
+                    <code>//</code> comments, <code>long long</code>, flexible
+                    array members, <code>_Bool</code> type.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>2011</strong></td>
+                  <td>C11</td>
+                  <td>
+                    Multithreading support, improved Unicode support, anonymous
+                    structures/unions, <code>_Generic</code> keyword,
+                    bounds-checking functions.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>2017</strong></td>
+                  <td>C17 (C18)</td>
+                  <td>
+                    Bug fixes and clarifications to C11. No new features, mainly
+                    defect resolution.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>2023</strong></td>
+                  <td>C23</td>
+                  <td>
+                    Binary literals, <code>typeof</code>, improved attributes,
+                    <code>#embed</code> directive, enhanced type safety.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <details class="fun-fact">
+            <summary>Quick Info: The K&R Book</summary>
+            <div class="fun-content">
+              "The C Programming Language" by Brian Kernighan and Dennis Ritchie
+              (often called "K&R") is one of the most influential programming
+              books ever written. First published in 1978, it defined C before
+              any official standard existed. The book's second edition (1988)
+              covers ANSI C and remains a classic reference today.
+            </div>
+          </details>
+
+          <h3>Core Features of C</h3>
+
+          <h4>1. Simplicity & Minimalism</h4>
+          <p>
+            C has only <strong>32 keywords</strong> in ANSI C (44 in C23). This
+            small keyword set makes the language easy to learn while remaining
+            powerful through its standard library and user-defined functions.
+          </p>
+
+          <h4>2. Efficiency</h4>
+          <p>
+            C provides direct access to memory through pointers and allows
+            low-level manipulation of data. Programs compiled in C run with
+            minimal overhead, making it ideal for:
+          </p>
+          <ul>
+            <li>Operating systems (Linux, Windows kernel components)</li>
+            <li>Embedded systems (microcontrollers, IoT devices)</li>
+            <li>Game engines (performance-critical components)</li>
+            <li>Database systems (MySQL, PostgreSQL core)</li>
+          </ul>
+
+          <h4>3. Portability</h4>
+          <p>
+            C code can be compiled and run on virtually any platform with a C
+            compiler. The same source code can work on:
+          </p>
+          <ul>
+            <li>Desktop systems (Windows, macOS, Linux)</li>
+            <li>Mobile devices (Android NDK, iOS)</li>
+            <li>Embedded systems (Arduino, Raspberry Pi)</li>
+            <li>Mainframes and supercomputers</li>
+          </ul>
+
+          <h4>4. Structured Programming</h4>
+          <p>
+            C supports structured programming with functions, loops, and
+            conditional statements, promoting code organization and reusability.
+          </p>
+
+          <h4>5. Rich Standard Library</h4>
+          <p>The C standard library provides functions for:</p>
+          <ul>
+            <li><code>stdio.h</code> - Input/output operations</li>
+            <li><code>stdlib.h</code> - Memory allocation, conversions</li>
+            <li><code>string.h</code> - String manipulation</li>
+            <li><code>math.h</code> - Mathematical functions</li>
+            <li><code>time.h</code> - Date and time functions</li>
+          </ul>
+
+          <div class="warning-box">
+            <span class="warning-title">Deprecated Features Warning</span>
+            Some older C features are now deprecated or removed in modern
+            standards:
+            <ul>
+              <li>
+                <code>gets()</code> - Removed in C11 (use
+                <code>fgets()</code> instead)
+              </li>
+              <li>Implicit <code>int</code> - No longer allowed in C99+</li>
+              <li>K&R style function declarations - Use ANSI prototypes</li>
+            </ul>
+          </div>
+
+          <details class="advanced-fact">
+            <summary>Deep Dive: Why C Remains Relevant in 2025</summary>
+            <div class="fun-content">
+              Despite being over 50 years old, C remains one of the most widely
+              used programming languages. Here's why:
+              <br /><br />
+              <strong>1. Operating Systems:</strong> Linux kernel, Windows
+              drivers, and macOS core components are written in C. <br /><br />
+              <strong>2. Performance Critical Applications:</strong> When every
+              microsecond counts (high-frequency trading, real-time systems), C
+              is the go-to choice. <br /><br />
+              <strong>3. Embedded Systems:</strong> With billions of IoT
+              devices, C dominates embedded programming due to its small
+              footprint and hardware control. <br /><br />
+              <strong>4. Foundation for Other Languages:</strong> Understanding
+              C helps you understand how Python, Java, and JavaScript work under
+              the hood. <br /><br />
+              <strong>5. Longevity:</strong> C code written 30 years ago can
+              still compile and run today with minimal changes.
+            </div>
+          </details>
+
+          <div class="try-it-box">
+            <span class="try-it-title"
+              >Try It Yourself: Check Your Compiler Version</span
+            >
+            Open your terminal and run these commands to check which C standard
+            your compiler supports:
+            <pre><code class="language-bash"># GCC
+gcc --version
+gcc -dM -E - < /dev/null | grep __STDC_VERSION__
+
+# Clang
+clang --version
+clang -dM -E - < /dev/null | grep __STDC_VERSION__</code></pre>
+            The <code>__STDC_VERSION__</code> macro shows the standard:
+            <ul>
+              <li><code>199901L</code> = C99</li>
+              <li><code>201112L</code> = C11</li>
+              <li><code>201710L</code> = C17</li>
+              <li><code>202311L</code> = C23</li>
+            </ul>
+          </div>
+
+          <div class="learn-more">
+            <h4>Learn More</h4>
+            <ul>
+              <li>
+                <a
+                  href="https://www.bell-labs.com/usr/dmr/www/chist.html"
+                  target="_blank"
+                >
+                  The Development of the C Language (Dennis Ritchie)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://en.cppreference.com/w/c/language/history"
+                  target="_blank"
+                >
+                  C Language History & Standards
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.iso.org/standard/74528.html"
+                  target="_blank"
+                >
+                  ISO C17 Standard (Official)
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="intro-structure">
+          <h2>
+            1.3 Program Structure
+            <span class="tag tag-core">Module 1</span>
+          </h2>
+
+          <h3>Anatomy of a C Program</h3>
+          <p>
+            Every C program follows a specific structure. Understanding this
+            structure is crucial for writing organized and maintainable code.
+          </p>
+
+          <pre><code class="language-c">/* 1. PREPROCESSOR DIRECTIVES */
+#include &lt;stdio.h&gt;      // Standard I/O library
+#include &lt;stdlib.h&gt;     // Standard library
+#define PI 3.14159      // Macro definition
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
+
+/* 2. GLOBAL DECLARATIONS */
+int globalVar = 100;    // Global variable
+const int DAYS = 7;     // Global constant
+
+/* 3. FUNCTION PROTOTYPES */
+void greet(void);
+int add(int a, int b);
+
+/* 4. MAIN FUNCTION */
+int main() {
+    // 4a. Local variable declarations
+    int localVar = 50;
+    
+    // 4b. Statements and expressions
+    printf("Global: %d, Local: %d\n", globalVar, localVar);
+    greet();
+    
+    int sum = add(10, 20);
+    printf("Sum: %d\n", sum);
+    
+    // 4c. Return statement
+    return 0;  // Success
+}
+
+/* 5. FUNCTION DEFINITIONS */
+void greet(void) {
+    printf("Hello from greet function!\n");
+}
+
+int add(int a, int b) {
+    return a + b;
+}</code></pre>
+
+          <h3>Program Structure Breakdown</h3>
+
+          <h4>1. Preprocessor Directives</h4>
+          <p>
+            Lines starting with <code>#</code> are processed before compilation.
+            Common directives include:
+          </p>
+          <ul>
+            <li><code>#include</code> - Includes header files</li>
+            <li><code>#define</code> - Defines macros and constants</li>
+            <li>
+              <code>#ifdef</code>, <code>#ifndef</code> - Conditional
+              compilation
+            </li>
+            <li><code>#pragma</code> - Compiler-specific instructions</li>
+          </ul>
+
+          <h4>2. Global Declarations</h4>
+          <p>
+            Variables and constants declared outside all functions. They have
+            <strong>file scope</strong> and exist for the entire program
+            lifetime.
+          </p>
+
+          <div class="warning-box">
+            <span class="warning-title">Minimize Global Variables</span>
+            Excessive use of global variables can lead to:
+            <ul>
+              <li>Difficult debugging (any function can modify them)</li>
+              <li>Name conflicts in large projects</li>
+              <li>Reduced code reusability</li>
+            </ul>
+            Use <code>static</code> keyword to limit scope to current file.
+          </div>
+
+          <h4>3. Function Prototypes (Forward Declarations)</h4>
+          <p>Declares functions before they're defined. This allows you to:</p>
+          <ul>
+            <li>Call functions before their definition</li>
+            <li>Organize code with main() at the top</li>
+            <li>Enable compiler type checking</li>
+          </ul>
+
+          <h4>4. The main() Function</h4>
+          <p>The entry point of every C program. Two standard forms:</p>
+          <pre><code class="language-c">// Form 1: No command-line arguments
+int main(void) {
+    // code
+    return 0;
+}
+
+// Form 2: With command-line arguments
+int main(int argc, char *argv[]) {
+    // argc: argument count
+    // argv: argument vector (array of strings)
+    return 0;
+}</code></pre>
+
+          <h4>5. Function Definitions</h4>
+          <p>Actual implementation of functions. Each function should:</p>
+          <ul>
+            <li>Have a single, well-defined purpose</li>
+            <li>Use descriptive names (verbs for actions)</li>
+            <li>Keep length reasonable (typically &lt; 50 lines)</li>
+            <li>Document complex logic with comments</li>
+          </ul>
+
+          <div class="mermaid-diagram">
+            <span class="diagram-title">C Program Structure Visualization</span>
+            <pre class="mermaid">
+flowchart TD
+    A["📋 PREPROCESSOR DIRECTIVES<br/>#include &lt;stdio.h&gt;<br/>#define MAX 100"] --> B["🌐 GLOBAL DECLARATIONS<br/>int globalVar;<br/>const float PI = 3.14;"]
+    B --> C["📝 FUNCTION PROTOTYPES<br/>void func1(void);<br/>int func2(int x);"]
+    C --> D["⚙️ MAIN FUNCTION<br/>int main() { }"]
+    D --> E["📦 Local Variables"]
+    D --> F["▶️ Statements & Function Calls"]
+    D --> G["↩️ return 0;"]
+    G --> H["🔧 FUNCTION DEFINITIONS<br/>void func1(void) { ... }<br/>int func2(int x) { ... }"]
+    
+    style A fill:#58a6ff22,stroke:#58a6ff,stroke-width:2px
+    style B fill:#58a6ff22,stroke:#58a6ff,stroke-width:2px
+    style C fill:#58a6ff22,stroke:#58a6ff,stroke-width:2px
+    style D fill:#d2a8ff22,stroke:#d2a8ff,stroke-width:3px
+    style E fill:#a5d6ff22,stroke:#a5d6ff,stroke-width:1px
+    style F fill:#a5d6ff22,stroke:#a5d6ff,stroke-width:1px
+    style G fill:#a5d6ff22,stroke:#a5d6ff,stroke-width:1px
+    style H fill:#58a6ff22,stroke:#58a6ff,stroke-width:2px
+            </pre>
+          </div>
+
+          <details class="fun-fact">
+            <summary>Quick Info: Why main() Returns int?</summary>
+            <div class="fun-content">
+              The <code>main()</code> function returns an integer to the
+              operating system to indicate the program's exit status:
+              <ul>
+                <li><code>0</code> = Success (standard convention)</li>
+                <li>
+                  Non-zero = Error (different values can indicate different
+                  errors)
+                </li>
+              </ul>
+              In Unix/Linux, you can check the exit status of the last command
+              with
+              <code>echo $?</code>. This is useful for shell scripts and
+              automation.
+            </div>
+          </details>
+
+          <div class="try-it-box">
+            <span class="try-it-title"
+              >Try It Yourself: Multi-File Program</span
+            >
+            Create a program split across multiple files:
+            <br /><br />
+            <strong>math_ops.h</strong> (Header file):
+            <pre><code class="language-c">#ifndef MATH_OPS_H
+#define MATH_OPS_H
+
+int add(int a, int b);
+int multiply(int a, int b);
+
+#endif</code></pre>
+            <strong>math_ops.c</strong> (Implementation):
+            <pre><code class="language-c">#include "math_ops.h"
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int multiply(int a, int b) {
+    return a * b;
+}</code></pre>
+            <strong>main.c</strong> (Main program):
+            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include "math_ops.h"
+
+int main() {
+    printf("5 + 3 = %d\n", add(5, 3));
+    printf("5 * 3 = %d\n", multiply(5, 3));
+    return 0;
+}</code></pre>
+            Compile with: <code>gcc main.c math_ops.c -o program</code>
+          </div>
+
+          <div class="learn-more">
+            <h4>Learn More</h4>
+            <ul>
+              <li>
+                <a
+                  href="https://en.cppreference.com/w/c/language/program_structure"
+                  target="_blank"
+                >
+                  C Program Structure Reference
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html"
+                  target="_blank"
+                >
+                  GNU C Language Manual
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="intro-compilation">
+          <h2>
+            1.4 Compilation Process
+            <span class="tag tag-core">Module 1</span>
+          </h2>
+
+          <h3>From Source Code to Executable</h3>
+          <p>
+            Compiling a C program involves
+            <strong>four distinct stages</strong>. Understanding these stages
+            helps you debug compilation errors and optimize your code.
+          </p>
+
+          <div class="mermaid-diagram">
+            <span class="diagram-title">The 4-Stage Compilation Process</span>
+            <pre class="mermaid">
+flowchart TD
+    A["📄 SOURCE CODE<br/>(program.c)<br/>#include &lt;stdio.h&gt;<br/>#define MAX 100<br/>int main() { printf('Hello'); }"] --> B["⚙️ 1. PREPROCESSING<br/>(cpp / gcc -E)"]
+    B --> C["📋 EXPANDED SOURCE<br/>(program.i)<br/>✓ Header files included<br/>✓ Macros expanded<br/>✓ Comments removed"]
+    C --> D["⚙️ 2. COMPILATION<br/>(cc1 / gcc -S)"]
+    D --> E["📝 ASSEMBLY CODE<br/>(program.s)<br/>mov $0, %eax<br/>call printf<br/>ret"]
+    E --> F["⚙️ 3. ASSEMBLY<br/>(as / gcc -c)"]
+    F --> G["🔧 OBJECT CODE<br/>(program.o)<br/>Binary machine code<br/>Relocatable format"]
+    G --> H["⚙️ 4. LINKING<br/>(ld / gcc)"]
+    H --> I["✅ EXECUTABLE<br/>(program / program.exe)<br/>Ready to run!"]
+    
+    style A fill:#58a6ff22,stroke:#58a6ff,stroke-width:2px
+    style B fill:#d2a8ff22,stroke:#d2a8ff,stroke-width:2px
+    style C fill:#58a6ff22,stroke:#58a6ff,stroke-width:2px
+    style D fill:#d2a8ff22,stroke:#d2a8ff,stroke-width:2px
+    style E fill:#58a6ff22,stroke:#58a6ff,stroke-width:2px
+    style F fill:#d2a8ff22,stroke:#d2a8ff,stroke-width:2px
+    style G fill:#58a6ff22,stroke:#58a6ff,stroke-width:2px
+    style H fill:#d2a8ff22,stroke:#d2a8ff,stroke-width:2px
+    style I fill:#a5d6ff44,stroke:#a5d6ff,stroke-width:3px
+            </pre>
+          </div>
+
+          <h3>Stage 1: Preprocessing</h3>
+          <p>
+            The preprocessor handles all directives starting with
+            <code>#</code>:
+          </p>
+          <ul>
+            <li>Includes header files (<code>#include</code>)</li>
+            <li>Expands macros (<code>#define</code>)</li>
+            <li>Removes comments</li>
+            <li>
+              Handles conditional compilation (<code>#ifdef</code>,
+              <code>#ifndef</code>)
+            </li>
+          </ul>
+          <pre><code class="language-bash"># View preprocessed output
+gcc -E program.c -o program.i
+# or
+cpp program.c > program.i</code></pre>
+
+          <h3>Stage 2: Compilation</h3>
+          <p>
+            The compiler translates preprocessed C code into assembly language
+            specific to your CPU architecture (x86, ARM, etc.).
+          </p>
+          <pre><code class="language-bash"># Generate assembly code
+gcc -S program.c -o program.s</code></pre>
+
+          <h3>Stage 3: Assembly</h3>
+          <p>
+            The assembler converts assembly code into machine code (binary),
+            creating an <strong>object file</strong> (.o or .obj).
+          </p>
+          <pre><code class="language-bash"># Create object file
+gcc -c program.c -o program.o</code></pre>
+
+          <h3>Stage 4: Linking</h3>
+          <p>
+            The linker combines your object files with library code (like
+            <code>printf</code> from the C standard library) to create the final
+            executable.
+          </p>
+          <pre><code class="language-bash"># Link and create executable
+gcc program.o -o program
+
+# Or do all stages at once
+gcc program.c -o program</code></pre>
+
+          <h3>Common GCC Compiler Flags</h3>
+          <div class="table-container">
+            <table
+              border="1"
+              cellpadding="10"
+              cellspacing="0"
+              style="width: 100%; border-collapse: collapse"
+            >
+              <thead>
+                <tr>
+                  <th>Flag</th>
+                  <th>Purpose</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>-o</code></td>
+                  <td>Specify output filename</td>
+                  <td><code>gcc main.c -o myprogram</code></td>
+                </tr>
+                <tr>
+                  <td><code>-Wall</code></td>
+                  <td>Enable all warnings</td>
+                  <td><code>gcc -Wall main.c</code></td>
+                </tr>
+                <tr>
+                  <td><code>-Werror</code></td>
+                  <td>Treat warnings as errors</td>
+                  <td><code>gcc -Wall -Werror main.c</code></td>
+                </tr>
+                <tr>
+                  <td><code>-g</code></td>
+                  <td>Include debugging information</td>
+                  <td><code>gcc -g main.c -o debug</code></td>
+                </tr>
+                <tr>
+                  <td><code>-O0, -O1, -O2, -O3</code></td>
+                  <td>Optimization levels (0=none, 3=max)</td>
+                  <td><code>gcc -O2 main.c -o fast</code></td>
+                </tr>
+                <tr>
+                  <td><code>-std=c99</code></td>
+                  <td>Specify C standard</td>
+                  <td><code>gcc -std=c11 main.c</code></td>
+                </tr>
+                <tr>
+                  <td><code>-I</code></td>
+                  <td>Add include directory</td>
+                  <td><code>gcc -I./include main.c</code></td>
+                </tr>
+                <tr>
+                  <td><code>-L</code></td>
+                  <td>Add library directory</td>
+                  <td><code>gcc -L./lib main.c</code></td>
+                </tr>
+                <tr>
+                  <td><code>-l</code></td>
+                  <td>Link with library</td>
+                  <td><code>gcc main.c -lm</code> (math lib)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="warning-box">
+            <span class="warning-title">Common Compilation Errors</span>
+            <ul>
+              <li>
+                <strong>Undefined reference:</strong> Missing function
+                definition or library
+              </li>
+              <li>
+                <strong>Implicit declaration:</strong> Missing function
+                prototype or header
+              </li>
+              <li>
+                <strong>Multiple definition:</strong> Same function defined in
+                multiple files
+              </li>
+              <li>
+                <strong>Cannot find -l[library]:</strong> Library not installed
+                or wrong path
+              </li>
+            </ul>
+            Always compile with <code>-Wall</code> to catch potential issues
+            early!
+          </div>
+
+          <details class="advanced-fact">
+            <summary>Deep Dive: Static vs Dynamic Linking</summary>
+            <div class="fun-content">
+              <strong>Static Linking:</strong> Library code is copied into your
+              executable.
+              <ul>
+                <li>✓ Executable runs standalone (no external dependencies)</li>
+                <li>✓ Faster startup time</li>
+                <li>✗ Larger executable size</li>
+                <li>✗ Must recompile to update libraries</li>
+              </ul>
+              <br />
+              <strong>Dynamic Linking:</strong> Executable references shared
+              libraries (.so, .dll).
+              <ul>
+                <li>✓ Smaller executable size</li>
+                <li>✓ Libraries can be updated independently</li>
+                <li>✓ Multiple programs share same library in memory</li>
+                <li>✗ Requires library files at runtime</li>
+              </ul>
+              <br />
+              Compile statically: <code>gcc -static program.c -o program</code
+              ><br />
+              Default is dynamic linking.
+            </div>
+          </details>
+
+          <div class="try-it-box">
+            <span class="try-it-title"
+              >Try It Yourself: Explore Compilation Stages</span
+            >
+            Create a simple program and examine each stage:
+            <pre><code class="language-c">// test.c
+#include &lt;stdio.h&gt;
+#define GREETING "Hello, World!"
+
+int main() {
+    printf("%s\n", GREETING);
+    return 0;
+}</code></pre>
+            Run these commands:
+            <ol>
+              <li>
+                <code>gcc -E test.c -o test.i</code> - View preprocessed code
+              </li>
+              <li><code>gcc -S test.c -o test.s</code> - View assembly code</li>
+              <li><code>gcc -c test.c -o test.o</code> - Create object file</li>
+              <li><code>gcc test.o -o test</code> - Link to executable</li>
+              <li><code>./test</code> - Run the program!</li>
+            </ol>
+            Open <code>test.i</code> and <code>test.s</code> to see what the
+            compiler does!
+          </div>
+
+          <div class="learn-more">
+            <h4>Learn More</h4>
+            <ul>
+              <li>
+                <a href="https://gcc.gnu.org/onlinedocs/gcc/" target="_blank">
+                  GCC Online Documentation
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.cprogramming.com/compilingandlinking.html"
+                  target="_blank"
+                >
+                  Understanding Compiling and Linking
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://clang.llvm.org/docs/UsersManual.html"
+                  target="_blank"
+                >
+                  Clang Compiler User Manual
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Additional placeholder sections for other modules -->
+        <section id="fund-datatypes">
+          <h2>
+            2.1 Data Types
+            <span class="tag tag-core">Module 2</span>
+          </h2>
+          <p>
+            <em
+              >Content to be added: Primitive data types (int, char, float,
+              double), derived types, type modifiers, and size
+              considerations.</em
+            >
+          </p>
+        </section>
+
+        <section id="lab-practical">
+          <h2>
+            <i class="fa-solid fa-flask"></i> C Programming Lab
+            <span class="tag tag-adv">Practical</span>
+          </h2>
+          <p>
+            <em
+              >Content to be added: Hands-on lab exercises, programming
+              challenges, and practical examples for each module.</em
+            >
+          </p>
+        </section>
+
+        <section id="roadmap">
+          <h2>
+            <i class="fa-solid fa-map-location-dot"></i> C Learning Roadmap
+            <span class="tag tag-adv">Guide</span>
+          </h2>
+          <p>
+            <em
+              >Content to be added: Visual roadmap showing the learning path
+              from beginner to advanced C programming, including recommended
+              projects and milestones.</em
+            >
+          </p>
+        </section>
+      </div>
+
+      <footer class="glass-footer">
+        <p>&copy; 2025 WebGuide. Built with passion for C programming.</p>
+      </footer>
+    </div>
+
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <!-- Prism.js Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <!-- Mermaid.js for Diagrams -->
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: document.body.classList.contains("light-mode")
+          ? "default"
+          : "dark",
+        themeVariables: {
+          primaryColor: "#58a6ff",
+          primaryTextColor: "#f0f6fc",
+          primaryBorderColor: "#58a6ff",
+          lineColor: "#8b949e",
+          secondaryColor: "#d2a8ff",
+          tertiaryColor: "#a5d6ff",
+        },
+      });
+
+      // Re-initialize on theme change
+      window.addEventListener("themeChanged", () => {
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: document.body.classList.contains("light-mode")
+            ? "default"
+            : "dark",
+        });
+        mermaid.contentLoaded();
+      });
+    </script>
+  </body>
+</html>
